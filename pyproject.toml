@@ -1,0 +1,40 @@
+[project]
+name = "voorisync"
+version = "0.1.0"
+description = "A tool to sync your local files with voorivex.academy tutorial videos."
+authors = [
+    {name = "AmirMohammad Hosseini Nasab", email = "awmirhn@gmail.com"},
+]
+dependencies = [
+    "tqdm>=4.66.1",
+    "requests>=2.31.0",
+    "click>=8.1.7",
+]
+requires-python = ">=3.8"
+readme = "README.md"
+license = {text = "MIT"}
+
+
+[tool.pdm]
+distribution = false
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "black>=24.1.1",
+    "isort>=5.13.2",
+]
+
+[tool.black]
+line-length = 120
+target-version = ['py38']
+
+[tool.isort]
+profile = "black"
+line_length = 120
+multi_line_output = 3
+
+[tool.pdm.scripts]
+black = "black ."
+isort = "isort ."
+lint = {composite = ["black", "isort"]}
+voorisync = {call = "voorisync:main"}
